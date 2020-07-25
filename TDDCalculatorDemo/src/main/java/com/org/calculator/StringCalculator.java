@@ -3,25 +3,31 @@ package com.org.calculator;
 public class StringCalculator {
 
 	public int add(String input) {
+		
 		if(input == null || input.isEmpty()) {
 			return 0;
 		} else if(input.equals("1")){
 			return 1;
-		} else if(input.contains(",")) {
-			String[] stringNumbers = input.split(",");
-			int output = 0;
-			for(int i = 0; i < stringNumbers.length; i++) {
-				int number = 0;
-				if(stringNumbers[i].contains("\n")) {
-					number = Integer.parseInt(stringNumbers[i].replace("\n", ""));
-				} else {
-					number = Integer.parseInt(stringNumbers[i]);
-				}
-				output = output + number;
+		} else {
+			if(input.startsWith("//")) {
+				String delimiter = input.substring(2,3);
+				input = input.replace("//" + delimiter, "");
+				input = input.replace(delimiter, ",");
 			}
-			return output;
+			if(input.contains(",")) {
+				String updatedInput = input.replace("\n", "");
+				String[] stringNumbers = updatedInput.split(",");
+				int output = 0;
+				for(int i = 0; i < stringNumbers.length; i++) {
+					int number =  Integer.parseInt(stringNumbers[i]);
+					if(number < 0) {
+						throw new NumberFormatException("Negative Number Not Allowed number passed is  " + number);
+					}
+					output = output + number;
+				}
+				return output;
+			}
 		}
-		
 		return -1;
 	}
 

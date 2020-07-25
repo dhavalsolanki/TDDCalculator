@@ -37,4 +37,18 @@ public class StringCalculatorTest {
 		int response = stringCalulator.add("1\n,4");
 		Assert.assertEquals(5, response);
 	}
+	
+	@Test
+	public void testAddCustomDlimiterAndReturn3() {
+		int response = stringCalulator.add("//;\n1;2");
+		Assert.assertEquals(3, response);
+	}
+	
+	@Test(expected = NumberFormatException.class)
+	public void testAddNegativeNumber() {
+		int response = stringCalulator.add("-1,1");
+		System.out.println(" response " + response);
+		Assert.assertEquals(3, response);
+	}
+	
 }
