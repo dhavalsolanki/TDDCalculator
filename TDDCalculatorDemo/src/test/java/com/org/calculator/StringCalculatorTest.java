@@ -11,7 +11,18 @@ public class StringCalculatorTest {
 	@Test
 	public void testReturnEmpty() {
 		int response = stringCalulator.add("");
-		
 		Assert.assertEquals(0, response);
+	}
+	
+	@Test
+	public void testAddAndReturn1() {
+		int response = stringCalulator.add("1");
+		Assert.assertEquals(1, response);
+	}
+	
+	@Test
+	public void testAddAndReturn4() {
+		int response = stringCalulator.add("1,3");
+		Assert.assertEquals(1, response);
 	}
 }
