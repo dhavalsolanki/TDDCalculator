@@ -51,4 +51,29 @@ public class StringCalculatorTest {
 		Assert.assertEquals(3, response);
 	}
 	
+	@Test
+	public void testAddMultipleNumbers() {
+		int response = stringCalulator.add("2,3,10,5,9");
+		Assert.assertEquals(29, response);
+	}
+	
+	@Test(expected = NumberFormatException.class)
+	public void testAddMultipleNegativeNumber() {
+		int response = stringCalulator.add("-1,1,-2,-3");
+		System.out.println(" response " + response);
+		Assert.assertEquals(3, response);
+	}
+	
+	@Test
+	public void testAddGreaterThan1000() {
+		int response = stringCalulator.add("2,1001");
+		Assert.assertEquals(2, response);
+	}
+	
+	@Test
+	public void testAddStarDelimiter() {
+		int response = stringCalulator.add("//[**]\n2**3**4");
+		Assert.assertEquals(9, response);
+	}
+	
 }
