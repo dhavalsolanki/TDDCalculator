@@ -11,7 +11,13 @@ public class StringCalculator {
 			String[] stringNumbers = input.split(",");
 			int output = 0;
 			for(int i = 0; i < stringNumbers.length; i++) {
-				output = output + Integer.parseInt(stringNumbers[i]);
+				int number = 0;
+				if(stringNumbers[i].contains("\n")) {
+					number = Integer.parseInt(stringNumbers[i].replace("\n", ""));
+				} else {
+					number = Integer.parseInt(stringNumbers[i]);
+				}
+				output = output + number;
 			}
 			return output;
 		}

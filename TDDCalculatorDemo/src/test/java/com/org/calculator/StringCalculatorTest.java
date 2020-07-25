@@ -31,4 +31,10 @@ public class StringCalculatorTest {
 		int response = stringCalulator.add("1,3,5");
 		Assert.assertEquals(9, response);
 	}
+	
+	@Test
+	public void testAddWithNewLineAndReturn5() {
+		int response = stringCalulator.add("1\n,4");
+		Assert.assertEquals(5, response);
+	}
 }
