@@ -23,6 +23,12 @@ public class StringCalculatorTest {
 	@Test
 	public void testAddAndReturn4() {
 		int response = stringCalulator.add("1,3");
-		Assert.assertEquals(1, response);
+		Assert.assertEquals(4, response);
+	}
+	
+	@Test
+	public void testAddAndReturn9() {
+		int response = stringCalulator.add("1,3,5");
+		Assert.assertEquals(9, response);
 	}
 }
