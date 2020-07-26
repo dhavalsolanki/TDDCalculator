@@ -1,9 +1,12 @@
 package com.org.calculator;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
 
 import junit.framework.Assert;
 
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class StringCalculatorTest {
 
 	StringCalculator stringCalulator = new StringCalculator();
@@ -83,7 +86,7 @@ public class StringCalculatorTest {
 	}
 
 	@Test
-	public void testMethodCalledCounter() {
+	public void testZMethodCalledCounter() {
 		int response = stringCalulator.getCalledCount();
 		Assert.assertEquals(12, response);
 	}

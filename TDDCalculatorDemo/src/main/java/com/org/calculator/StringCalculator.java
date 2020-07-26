@@ -9,7 +9,6 @@ public class StringCalculator {
 	
 	public int add(String input) {
 		methodCalledCount++;
-		System.out.println("methodCalledCount  " + methodCalledCount);
 		if(input == null || input.isEmpty()) {
 			return 0;
 		} else if(input.equals("1")){
@@ -64,8 +63,8 @@ public class StringCalculator {
 		return tokens;
 	}
 
+	
 	public int getCalledCount() {
-		System.out.println("getCalledCount called");
 		return methodCalledCount;
 	}
 }
