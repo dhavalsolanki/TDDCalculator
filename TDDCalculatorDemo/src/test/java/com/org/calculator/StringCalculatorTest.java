@@ -76,4 +76,15 @@ public class StringCalculatorTest {
 		Assert.assertEquals(9, response);
 	}
 	
+	@Test
+	public void testAddMultipleDelimiter() {
+		int response = stringCalulator.add("//[**][%%]\n2**3%%4");
+		Assert.assertEquals(9, response);
+	}
+
+	@Test
+	public void testMethodCalledCounter() {
+		int response = stringCalulator.getCalledCount();
+		Assert.assertEquals(12, response);
+	}
 }

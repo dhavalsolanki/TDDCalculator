@@ -5,25 +5,30 @@ import java.util.List;
 
 public class StringCalculator {
 
+	public static int methodCalledCount = 0;
+	
 	public int add(String input) {
-		
+		methodCalledCount++;
+		System.out.println("methodCalledCount  " + methodCalledCount);
 		if(input == null || input.isEmpty()) {
 			return 0;
 		} else if(input.equals("1")){
 			return 1;
 		} else {
 			if(input.startsWith("//[")) {
-				int endDelimiterIndex = input.indexOf("]");
-				String delimiter = input.substring(3, endDelimiterIndex);
-				input = input.replace("//[" + delimiter + "]", "");
-				input = input.replace(delimiter, ",");
-			}
-			if(input.startsWith("//")) {
+				
+				String[] inputArray = input.split("]\n");
+				List<String> delimiters = getDelimiterTokens(inputArray[0]);
+				String inputString = inputArray[1];
+				for(String delimiter : delimiters) {
+					inputString = inputString.replace(delimiter, ",");
+				}
+				input = inputString;
+			} else if(input.startsWith("//")) {
 				String delimiter = input.substring(2,3);
 				input = input.replace("//" + delimiter, "");
 				input = input.replace(delimiter, ",");
 			}
-			
 			if(input.contains(",")) {
 				String updatedInput = input.replace("\n", "");
 				String[] stringNumbers = updatedInput.split(",");
@@ -45,5 +50,22 @@ public class StringCalculator {
 		}
 		return -1;
 	}
+	
+	public List<String> getDelimiterTokens(String input) {
+		List<String> tokens = new ArrayList<String>();
+		input = input.replace("//", "");
+		String[] tokenStrings = input.split("]");
+		
+		for(String token : tokenStrings) {
+			token = token.replace("[", "");
+			token = token.replace("]", "");
+			tokens.add(token);
+		}
+		return tokens;
+	}
 
+	public int getCalledCount() {
+		System.out.println("getCalledCount called");
+		return methodCalledCount;
+	}
 }
